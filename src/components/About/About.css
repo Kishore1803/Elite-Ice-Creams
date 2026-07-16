@@ -1,0 +1,76 @@
+/* About Page */
+
+.about-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #8b0000, #c1121f, #e63946);
+    padding: 100px 0;
+}
+
+.about-image {
+    width: 100%;
+    max-width: 550px;
+    transition: 0.5s ease;
+    filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.35));
+    border-radius: 20px;
+}
+
+.about-image:hover {
+    transform: translateY(-10px) scale(1.05);
+}
+
+.about-section h1 {
+    line-height: 1.2;
+}
+
+.about-section p {
+    color: #f8f9fa;
+}
+
+.about-story-img {
+    width: 300px;
+    height: 300px;
+    transition: 0.5s;
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.2));
+    border-radius: 25px;
+}
+
+.about-story-img:hover {
+    transform: scale(1.05);
+}
+
+.why-card {
+    border-radius: 20px;
+    transition: 0.4s;
+}
+
+.why-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        text-align: justify;
+    }
+
+    .about-section h1 {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-section h1 {
+        font-size: 2.2rem;
+    }
+
+    .about-image {
+        max-width: 320px;
+    }
+
+    .about-story-img{
+        width: 275px;
+        height: 250px;
+    }
+}
