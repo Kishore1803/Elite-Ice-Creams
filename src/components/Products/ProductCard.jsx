@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { FaHeart, FaStar, FaShoppingCart, FaBolt } from "react-icons/fa";
 
+import { useContext } from "react";
+import { CartContext } from "../Context/CartContext";
+import { WishlistContext } from "../Context/WishlistContext";
+
 const ProductCard = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
+  const {addToCart} = useContext(CartContext);
+  const {addToWishlist} = useContext(WishlistContext);
 
   return (
     <div className="card border-0 shadow-sm rounded-4">
@@ -15,7 +21,7 @@ const ProductCard = ({ product }) => {
           style={{
             height: "270px",
             width: "100%",
-            objectFit: "Fill"
+            objectFit: "Fill",
           }}
         />
 
@@ -29,7 +35,10 @@ const ProductCard = ({ product }) => {
         </span>
 
         {/* Wishlist */}
-        <button className="btn btn-light rounded-circle position-absolute top-0 end-0 m-3 shadow-sm">
+        <button
+          className="btn btn-light rounded-circle position-absolute top-0 end-0 m-3 shadow-sm"
+          onClick={() => addToWishlist(product)}
+        >
           <FaHeart className="text-danger" />
         </button>
       </div>
@@ -37,7 +46,6 @@ const ProductCard = ({ product }) => {
       {/* Product Details */}
       <div className="card-body">
         <h5 className="fw-bold">{product.name}</h5>
-
         <small className="text-muted">{product.category}</small>
 
         {/* Rating */}
@@ -45,18 +53,15 @@ const ProductCard = ({ product }) => {
           {[...Array(5)].map((_, index) => (
             <FaStar key={index} className="text-warning me-1" />
           ))}
-
           <small className="text-muted">({product.reviews})</small>
         </div>
 
         {/* Price */}
         <div className="mb-3">
           <span className="fs-4 fw-bold text-danger">₹{product.price}</span>
-
           <span className="text-decoration-line-through text-secondary ms-2">
             ₹{product.originalPrice}
           </span>
-
           <span className="badge bg-success ms-2">{product.discount}</span>
         </div>
 
@@ -73,9 +78,7 @@ const ProductCard = ({ product }) => {
           >
             -
           </button>
-
           <span className="mx-3 fw-bold">{quantity}</span>
-
           <button
             className="btn btn-outline-secondary"
             onClick={() => setQuantity(quantity + 1)}
@@ -86,7 +89,10 @@ const ProductCard = ({ product }) => {
 
         {/* Buttons */}
         <div className="d-grid gap-2">
-          <button className="btn btn-danger rounded-pill">
+          <button
+            className="btn btn-danger rounded-pill"
+            onClick={() => addToCart(product)}
+          >
             <FaShoppingCart className="me-2" />
             Add to Cart
           </button>

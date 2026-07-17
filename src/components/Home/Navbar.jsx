@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaSearch, FaBars } from "react-icons/fa";
+import { FaSearch, FaBars, FaHeart, FaShoppingCart } from "react-icons/fa";
 import SearchBar from "./SearchBar";
 
 function Navbar() {
@@ -48,6 +48,18 @@ function Navbar() {
             <li className="nav-item">
               <Link className="nav-link px-3 text-white" to="/contact">
                 Contact
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link px-3 text-white" to="/wishlist">
+                Wishlist <FaHeart />
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link px-3 text-white" to="/cart">
+                Add to Cart <FaShoppingCart />
               </Link>
             </li>
           </ul>
