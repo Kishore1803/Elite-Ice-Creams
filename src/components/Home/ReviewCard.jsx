@@ -7,7 +7,7 @@ function ReviewCard() {
       style={{
         top: "40px",
         right: "20px",
-        width: "280px",
+        width: "300px",
         borderRadius: "20px",
       }}
     >

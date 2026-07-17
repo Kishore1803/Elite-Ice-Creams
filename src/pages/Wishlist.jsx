@@ -39,10 +39,10 @@ const Wishlist = () => {
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="card-img-top rounded-top-4"
+                    className="card rounded"
                     style={{
-                      height: "260px",
-                      objectFit: "cover",
+                      height: "240px",
+                      objectFit: "fit",
                     }}
                   />
 

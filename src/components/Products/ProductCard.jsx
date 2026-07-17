@@ -37,7 +37,10 @@ const ProductCard = ({ product }) => {
         {/* Wishlist */}
         <button
           className="btn btn-light rounded-circle position-absolute top-0 end-0 m-3 shadow-sm"
-          onClick={() => addToWishlist(product)}
+          onClick={() => {
+            addToWishlist(product);
+            alert(`${product.name} added to wishlist`)
+          }}
         >
           <FaHeart className="text-danger" />
         </button>

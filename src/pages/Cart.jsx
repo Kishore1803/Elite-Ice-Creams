@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Home/Navbar";
 import Footer from "../components/Home/Footer";
 import { CartContext } from "../components/Context/CartContext";
@@ -6,35 +7,36 @@ import { FaTrash, FaShoppingBag, FaStar } from "react-icons/fa";
 
 const Cart = () => {
   const { cart, removeFromCart } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const handleRemove = (item) => {
     removeFromCart(item.id);
-    alert(`${item.name} removed from cart!`);
+    // Remove this alert if you already have one in CartContext.jsx
   };
 
   const handleCheckout = () => {
     if (cart.length === 0) {
-      alert("Your cart is empty!");
+      alert("🛒 Your cart is empty!\nPlease add items to continue.");
       return;
     }
 
-    alert(`🎉 Order placed successfully!\n\nTotal Amount: ₹${total}`);
+    navigate("/checkout");
   };
 
   return (
     <>
       <Navbar />
 
-      <div className="container py-5">
+      <div className="container p-5">
         <h2 className="text-center fw-bold mt-5">🛒 My Cart</h2>
 
         {cart.length === 0 ? (
-          <div className="text-center p-5">
+          <div className="text-center">
             <h3>Your Cart is Empty</h3>
             <p className="text-muted">
-              Add your favourite ice creams to the cart.
+              Add your favourite ice creams to your cart.
             </p>
           </div>
         ) : (
@@ -46,7 +48,7 @@ const Cart = () => {
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="card-img-top rounded-top-4"
+                      className="card-img-top"
                       style={{
                         height: "260px",
                         objectFit: "cover",
@@ -59,14 +61,14 @@ const Cart = () => {
                       <small className="text-muted">{item.category}</small>
 
                       <div className="my-2">
-                        {[...Array(5)].map((_, i) => (
-                          <FaStar key={i} className="text-warning me-1" />
+                        {[...Array(5)].map((_, index) => (
+                          <FaStar key={index} className="text-warning me-1" />
                         ))}
 
                         <small className="text-muted">({item.reviews})</small>
                       </div>
 
-                      <div className="mb-3">
+                      <div className="mb-2">
                         <span className="fs-4 fw-bold text-danger">
                           ₹{item.price}
                         </span>
@@ -80,18 +82,20 @@ const Cart = () => {
                         </span>
                       </div>
 
-                      <p className="text-success fw-semibold">● In Stock</p>
+                      <p className="text-success fw-bold">● In Stock</p>
 
-                      <p>
-                        <strong>Quantity:</strong> {item.quantity}
-                      </p>
+                      <h6>Quantity : {item.quantity}</h6>
+
+                      <h5 className="mt-3">
+                        Total : ₹{item.price * item.quantity}
+                      </h5>
 
                       <button
-                        className="btn btn-danger w-100 rounded-pill"
+                        className="btn btn-danger rounded-pill w-100 mt-3"
                         onClick={() => handleRemove(item)}
                       >
                         <FaTrash className="me-2" />
-                        Remove from Cart
+                        Remove
                       </button>
                     </div>
                   </div>
@@ -99,10 +103,9 @@ const Cart = () => {
               ))}
             </div>
 
-            <div className="card shadow-lg border-0 rounded-4 mt-5 p-4">
+            <div className="card shadow border-0 rounded-4 p-4 mt-5">
               <h3 className="fw-bold">
-                Total Amount:
-                <span className="text-danger ms-2">₹{total}</span>
+                Grand Total :<span className="text-danger ms-2">₹{total}</span>
               </h3>
 
               <button
@@ -116,7 +119,6 @@ const Cart = () => {
           </>
         )}
       </div>
-
       <Footer />
     </>
   );
