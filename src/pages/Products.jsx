@@ -7,7 +7,7 @@ import CategoryFilter from "../components/Products/CategoryFilter";
 import SearchBar from "../components/Products/SearchBar";
 import SortDropDown from "../components/Products/SortDropDown";
 import ProductGallery from "../components/Products/ProductGallery";
-import FilterSidebar from "../components/Products/FilterSidebar";
+import FilterSidebar from "../components/Products/FilterSideBar";
 
 import productsData from "../Data/products";
 
