@@ -7,7 +7,6 @@ export const CartProvider = ({ children }) => {
     setCart((prevCart) => {
       const exist = prevCart.find((item) => item.id === product.id);
       if (exist) {
-        alert(`${product.name} quantity updated in cart!`);
 
         return prevCart.map((item) =>
           item.id === product.id

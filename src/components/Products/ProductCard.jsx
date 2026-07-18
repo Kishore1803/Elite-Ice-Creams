@@ -7,8 +7,8 @@ import { WishlistContext } from "../Context/WishlistContext";
 
 const ProductCard = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
-  const {addToCart} = useContext(CartContext);
-  const {addToWishlist} = useContext(WishlistContext);
+  const { addToCart } = useContext(CartContext);
+  const { addToWishlist } = useContext(WishlistContext);
 
   return (
     <div className="card border-0 shadow-sm rounded-4">
@@ -39,7 +39,7 @@ const ProductCard = ({ product }) => {
           className="btn btn-light rounded-circle position-absolute top-0 end-0 m-3 shadow-sm"
           onClick={() => {
             addToWishlist(product);
-            alert(`${product.name} added to wishlist`)
+            alert(`${product.name} added to wishlist`);
           }}
         >
           <FaHeart className="text-danger" />
@@ -94,13 +94,22 @@ const ProductCard = ({ product }) => {
         <div className="d-grid gap-2">
           <button
             className="btn btn-danger rounded-pill"
-            onClick={() => addToCart(product)}
+            onClick={() => {
+              addToCart(product);
+              alert(`${product.name} added to cart`);
+            }}
           >
             <FaShoppingCart className="me-2" />
             Add to Cart
           </button>
 
-          <button className="btn btn-outline-danger rounded-pill">
+          <button
+            className="btn btn-outline-danger rounded-pill"
+            onClick={() => {
+              addToCart(product);
+              navigate("/checkout");
+            }}
+          >
             <FaBolt className="me-2" />
             Buy Now
           </button>

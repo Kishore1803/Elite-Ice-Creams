@@ -9,10 +9,8 @@ export const WishlistProvider = ({ children }) => {
         (item) => item.id === product.id
       );
       if (exist) {
-        alert(`${product.name} is already in your wishlist!`);
         return prevWishlist;
       }
-      alert(`${product.name} added to wishlist!`);
       return [...prevWishlist, product];
     });
   };
@@ -20,8 +18,6 @@ export const WishlistProvider = ({ children }) => {
     setWishlist((prevWishlist) =>
       prevWishlist.filter((item) => item.id !== id)
     );
-
-    alert("Item removed from wishlist!");
   };
   return (
     <WishlistContext.Provider

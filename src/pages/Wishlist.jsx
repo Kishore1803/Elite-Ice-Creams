@@ -48,9 +48,7 @@ const Wishlist = () => {
 
                   <div className="card-body">
                     <h5 className="fw-bold">{item.name}</h5>
-
                     <small className="text-muted">{item.category}</small>
-
                     <div className="my-2">
                       {[...Array(5)].map((_, i) => (
                         <FaStar key={i} className="text-warning me-1" />

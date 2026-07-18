@@ -7,6 +7,7 @@ import CategoryFilter from "../components/Products/CategoryFilter";
 import SearchBar from "../components/Products/SearchBar";
 import SortDropDown from "../components/Products/SortDropDown";
 import ProductGallery from "../components/Products/ProductGallery";
+import FilterSidebar from "../components/Products/FilterSidebar";
 
 import productsData from "../Data/products";
 
@@ -15,15 +16,30 @@ const Products = () => {
   const [category, setCategory] = useState("All Flavors");
   const [sort, setSort] = useState("Popularity");
 
+  const [price, setPrice] = useState(500);
+  const [selectedDiet, setSelectedDiet] = useState([]);
+
   let filteredProducts = productsData.filter((product) => {
     const matchesSearch = product.name
       .toLowerCase()
       .includes(search.toLowerCase());
 
     const matchesCategory =
-      category === "All Flavors" || product.category === category;
+      category === "All Flavors" ||
+      product.category === category;
 
-    return matchesSearch && matchesCategory;
+    const matchesPrice = product.price <= price;
+
+    const matchesDiet =
+      selectedDiet.length === 0 ||
+      selectedDiet.includes(product.dietary);
+
+    return (
+      matchesSearch &&
+      matchesCategory &&
+      matchesPrice &&
+      matchesDiet
+    );
   });
 
   switch (sort) {
@@ -53,33 +69,75 @@ const Products = () => {
 
       <section className="py-5 bg-light">
         <div className="container">
-          {/* Heading */}
-          <div className="text-center mt-5 mb-5">
-            <h2 className="fw-bold display-5">Premium Ice Cream Collection</h2>
 
-            <p className="text-muted">Fresh • Creamy • Delivered in Minutes</p>
+          <div className="text-center mt-5 mb-5">
+            <h2 className="fw-bold display-5">
+              Premium Ice Cream Collection
+            </h2>
+
+            <p className="text-muted">
+              Fresh • Creamy • Delivered in Minutes
+            </p>
           </div>
 
           <div className="row">
+
             {/* Sidebar */}
+
             <div className="col-lg-3 mb-4">
-              <CategoryFilter onCategoryChange={setCategory} />
+
+              <CategoryFilter
+                onCategoryChange={setCategory}
+              />
+
+              <div className="mt-4">
+                <FilterSidebar
+                  price={price}
+                  setPrice={setPrice}
+                  selectedDiet={selectedDiet}
+                  setSelectedDiet={setSelectedDiet}
+                />
+              </div>
+
             </div>
 
-            {/* Products Section */}
+            {/* Products */}
+
             <div className="col-lg-9">
+
               <div className="row mb-4">
+
                 <div className="col-md-8 mb-3 mb-md-0">
-                  <SearchBar search={search} setSearch={setSearch} />
+                  <SearchBar
+                    search={search}
+                    setSearch={setSearch}
+                  />
                 </div>
 
                 <div className="col-md-4">
-                  <SortDropDown sort={sort} setSort={setSort} />
+                  <SortDropDown
+                    sort={sort}
+                    setSort={setSort}
+                  />
                 </div>
+
               </div>
 
-              <ProductGallery products={filteredProducts} />
+              {filteredProducts.length > 0 ? (
+                <ProductGallery
+                  products={filteredProducts}
+                />
+              ) : (
+                <div className="text-center py-5">
+                  <h3>No Products Found</h3>
+                  <p className="text-muted">
+                    Try changing the filters.
+                  </p>
+                </div>
+              )}
+
             </div>
+
           </div>
         </div>
       </section>
