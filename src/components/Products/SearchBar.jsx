@@ -3,7 +3,7 @@ import { FaSearch } from "react-icons/fa";
 
 const SearchBar = ({ search, setSearch }) => {
   return (
-    <div className="input-group shadow-sm">
+    <div className="input-group">
       <span className="input-group-text bg-white border-end-0 rounded-start-pill">
         <FaSearch className="text-secondary" />
       </span>

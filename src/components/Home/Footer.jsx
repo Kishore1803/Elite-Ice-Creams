@@ -8,11 +8,13 @@ function Footer() {
         <div className="row">
           <div className="col-md-4">
             <h2>🍦 Elite Ice Creams</h2>
-            <p>Fresh & Delicious Ice Cream Delivered to Your Doorstep.</p>
+            <p className="mt-3">
+              Fresh & Delicious Ice Cream Delivered to Your Doorstep.
+            </p>
           </div>
           <div className="col-md-4">
             <h4>Quick Links</h4>
-            <ul className="list-unstyled">
+            <ul className="list-unstyled mt-3">
               <li>
                 <Link to="/" className="text-decoration-none text-white">
                   Home
@@ -37,7 +39,7 @@ function Footer() {
           </div>
           <div className="col-md-4">
             <h4>Follow Us</h4>
-            <div className="d-flex gap-3 fs-3">
+            <div className="d-flex gap-3 fs-3 mt-3">
               <FaFacebook />
               <FaInstagram />
               <FaTwitter />

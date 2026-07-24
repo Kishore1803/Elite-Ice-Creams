@@ -5,7 +5,7 @@ const SortDropDown = ({ sort, setSort }) => {
     <div className="d-flex justify-content-end">
       <select
         className="form-select rounded-pill shadow-sm"
-        style={{ maxWidth: "250px" }}
+        style={{ maxWidth: "auto" }}
         value={sort}
         onChange={(e) => setSort(e.target.value)}
       >

@@ -4,7 +4,8 @@ import SearchBar from "./SearchBar";
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg bg-dark navbar-dark position-absolute top-0 start-0 w-100">
+    <nav className="navbar navbar-expand-lg bg-dark navbar-dark 
+                    position-absolute top-0 start-0 w-100 fixed-top">
       <div className="container">
         {/* Logo */}
         <Link className="navbar-brand fw-bold fs-3" to="/">
@@ -25,47 +26,47 @@ function Navbar() {
         </button>
 
         {/* Menu */}
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className="collapse navbar-collapse mt-3-sm mb-3-sm " id="navbarNav">
           <ul className="navbar-nav mx-auto">
             <li className="nav-item">
-              <Link className="nav-link px-3 text-white" to="/">
+              <Link className="nav-link px-3 text-white text-start" to="/">
                 Home
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link px-3 text-white" to="/about">
+              <Link className="nav-link px-3 text-white text-start " to="/about">
                 About
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link px-3 text-white" to="/products">
+              <Link className="nav-link px-3 text-white text-start " to="/products">
                 Products
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link px-3 text-white" to="/contact">
+              <Link className="nav-link px-3 text-white text-start" to="/contact">
                 Contact
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link px-3 text-white" to="/wishlist">
+              <Link className="nav-link px-3 text-white text-start" to="/wishlist">
                 Wishlist <FaHeart />
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link px-3 text-white" to="/cart">
+              <Link className="nav-link px-3 text-white text-start" to="/cart">
                 Add to Cart <FaShoppingCart />
               </Link>
             </li>
           </ul>
 
           {/* Right Side */}
-          <div className="mt-3 mt-lg-0">
+          <div className="mt-3 mb-3">
             <Link
               to="/Login"
               className="btn btn-outline-light rounded-pill px-4"
